@@ -29,6 +29,8 @@ module Controls
       def prioritized_guidance_by_threat_vector(threat_vector)
         get "/threat_vectors/#{threat_vector}/prioritized_guidance"
       end
+
+      # @!endgroup
     end
   end
 end
