@@ -1,4 +1,5 @@
-# ![controls insight](https://raw.github.com/ipwnstuff/controls.rb/master/docs/images/controlsinsight.png "controlsinsight") client gem
+# ![controls insight](https://raw.github.com/rapid7/controlsinsight.rb/master/docs/images/controlsinsight.png "controlsinsight") client gem
+
 The **controls**insight (controls) gem interfaces with [Rapid7's **controls**insight API](http://docs.controlsinsight.apiary.io).
 
 ## Installation
@@ -16,7 +17,7 @@ Or install it yourself as:
 
 ## Documentation
 * [Apiary API documentation](http://docs.controlsinsight.apiary.io)
-* [YARD documentation for the Ruby client](http://www.rubydoc.info/github/ipwnstuff/controls.rb)
+* [YARD documentation for the Ruby client](http://www.rubydoc.info/github/rapid7/controlsinsight.rb)
 
 ## Basic Resources
 ### Authentication
@@ -70,6 +71,17 @@ Controls.threats
 
 # Only retrieve a single threat
 Controls.threats('threat-name-here')
+# => TODO: Add example output
+```
+
+### Threat Vectors
+```ruby
+# Retrieve a list of all the threat vectors
+Controls.threat_vectors
+# => TODO: Add example output
+
+# Only retrieve a single threat vector
+Controls.threat_vectors('vector-name-here')
 # => TODO: Add example output
 ```
 
