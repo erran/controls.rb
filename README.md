@@ -61,6 +61,9 @@ Controls.assets('your-asset-uuid-here')
 # Only retrieve a single guidance by name
 Controls.guidance('your-guidance-name-here')
 # => TODO: Add example output
+
+Controls.guidance_by_threat('overall-malware')
+# => TODO: Add example output
 ```
 
 ### Threats
