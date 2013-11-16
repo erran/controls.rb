@@ -1,4 +1,4 @@
-# controlsinsight REST API v1.0 (beta) documentation
+# controlsinsight client gem
 The **controls**insight (controls) gem interfaces with [Rapid7's **controls**insight API](http://rapid7.viewdocs.io/controlsinsight.rb).
 
 ## Installation
