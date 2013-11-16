@@ -1,5 +1,4 @@
-# ControlsInsight API v1.0 (beta)
-
+ControlsInsight API v1.0 (beta)
 ---
 
 ## Overview
@@ -34,8 +33,6 @@ Controls.login 'admin', 'password'
 # Return the API reference for the current API version
 Controls.get '/'
 ```
-
-----
 
 ## Authentication via a `.netrc` file
 ### Curl
@@ -86,4 +83,3 @@ client = Controls::Client.new({
     "messsage": "The resource x could not be found."
 }
 ```
---
