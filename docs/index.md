@@ -61,7 +61,7 @@ client = Controls::Client.new({
 })
 ```
 
-**NOTE**: The **controls** Ruby client doesn't enable or install netrc support by default. Install/enable netrc support as follows:
+**NOTE**: The **controls** Ruby client doesn't enable or install netrc support by default. You must follow the preceding instructions to enable it.
 # Status & Error Codes
 ## Success
 <table>
