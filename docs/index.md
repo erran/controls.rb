@@ -1,6 +1,6 @@
 # ![controls insight](https://raw.github.com/rapid7/controlsinsight.rb/master/docs/images/controlsinsight.png "controlsinsight") client gem
 
-The **controls**insight (controls) gem interfaces with [Rapid7's **controls**insight API](http://docs.controlsinsight.apiary.io).
+The **controls**insight (controls) gem interfaces with [Rapid7's **controls**insight API](http://rapid7.viewdocs.io/controlsinsight.rb).
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -16,7 +16,7 @@ Or install it yourself as:
     $ gem install controls
 
 ## Documentation
-* [Apiary API documentation](http://docs.controlsinsight.apiary.io)
+* [viewdocs.io API documentation](http://rapid7.viewdocs.io/controlsinsight.rb)
 * [YARD documentation for the Ruby client](http://www.rubydoc.info/github/rapid7/controlsinsight.rb)
 
 ## Basic Resources
