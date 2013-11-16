@@ -63,13 +63,13 @@ client = Controls::Client.new({
 
 # Status & Error Codes
 ## Success
-<table border="1">
+<table>
 <tr><th>Status Code</th><th>Status</th><th>Description</th></tr>
 <tr><td>200</td><td>OK</td><td>The request was successful (includes a hash/array for the requested resource)</td></tr>
 </table>
 
 ## Failure
-<table border="1">
+<table>
 <tr><th>Status Code</th><th>Status</th><th>Description</th></tr>
 <tr><td>401</td><td>Unauthorized</td><td>The request didn't contain any information for authentication</td></tr>
 <tr><td>403</td><td>Bad Request</td><td>The query parameters you supplied were invalid</td></tr>
