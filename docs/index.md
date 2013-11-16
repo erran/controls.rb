@@ -42,13 +42,13 @@ curl -H 'Accept: application/json' --netrc-file ~/.rapid7_netrc  -ik https://nex
 ```
 
 ### Ruby
-**NOTE**: The **controls** Ruby client doesn't enable or install netrc support by default. Install/enable netrc support as follows:
-
+On the command line run:
 ```bash
 gem install netrc
 irb -r controls
 ```
 
+Once you open IRB run:
 ```ruby
 # Allow connections to Nexpose's self-signed cert
 Controls.middleware.ssl[:verify] = false
@@ -61,6 +61,7 @@ client = Controls::Client.new({
 })
 ```
 
+**NOTE**: The **controls** Ruby client doesn't enable or install netrc support by default. Install/enable netrc support as follows:
 # Status & Error Codes
 ## Success
 <table>
