@@ -10,7 +10,7 @@ This documentation includes custom Curl examples and Ruby examples using the Rub
 
 Apiary.io also adds example requests in other languages, though they aren't supported tested them.
 
-To see advanced usage in Ruby read the [Ruby client documentation here](http://www.rubydoc.info/github/ipwnstuff/controls.rb).
+To see advanced usage in Ruby read the [Ruby client documentation here](http://www.rubydoc.info/github/rapid7/controlsinsight.rb).
 
 ## Authentication
 You must authenticate using HTTP Basic Auth when making any of the API requests.
