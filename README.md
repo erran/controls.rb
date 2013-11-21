@@ -60,6 +60,9 @@ Controls.assets('your-asset-uuid-here')
 # Only retrieve a single guidance by name
 Controls.guidance('your-guidance-name-here')
 # => TODO: Add example output
+
+Controls.guidance_by_threat('overall-malware')
+# => TODO: Add example output
 ```
 
 ### Threats
@@ -81,6 +84,19 @@ Controls.threat_vectors
 
 # Only retrieve a single threat vector
 Controls.threat_vectors('vector-name-here')
+# => TODO: Add example output
+```
+
+# Trends
+```ruby
+# Retrieve a set of statistics over time
+Controls.threat_trends('threat-name-here')
+# => TODO: Add example output
+
+Controls.threat_vector_trends('vector-name-here')
+# => TODO: Add example output
+
+Controls.configuration_trends('configuration-name-here')
 # => TODO: Add example output
 ```
 

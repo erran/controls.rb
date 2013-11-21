@@ -4,6 +4,8 @@ module Controls
     # @since API v1.0
     # @version v1.0.0
     module Assessments
+      # @!group Assessment Methods
+
       # @return [Array<Hash>] an array of assessment hashes
       def assessments(assessment_id = nil)
         if assessment_id
@@ -12,6 +14,8 @@ module Controls
           get '/assessments'
         end
       end
+
+      # @!endgroup
     end
   end
 end

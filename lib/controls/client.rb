@@ -8,6 +8,7 @@ require 'controls/client/assets'
 require 'controls/client/guidance'
 require 'controls/client/security_controls'
 require 'controls/client/threats'
+require 'controls/client/trends'
 require 'controls/response'
 
 module Controls
@@ -20,6 +21,7 @@ module Controls
     include Controls::Client::Guidance
     include Controls::Client::SecurityControls
     include Controls::Client::Threats
+    include Controls::Client::Trends
 
     SSL_WARNING = ["The API endpoint used a self-signed or invalid SSL certificate.",
              "To allow this connection temporarily use `Controls.verify_ssl = false`.",
