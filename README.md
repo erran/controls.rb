@@ -87,5 +87,18 @@ Controls.threat_vectors('vector-name-here')
 # => TODO: Add example output
 ```
 
+# Trends
+```ruby
+# Retrieve a set of statistics over time
+Controls.threat_trends('threat-name-here')
+# => TODO: Add example output
+
+Controls.threat_vector_trends('vector-name-here')
+# => TODO: Add example output
+
+Controls.configuration_trends('configuration-name-here')
+# => TODO: Add example output
+```
+
 ## License
 This project was created by [Erran Carey (@ipwnstuff)](http://ipwnstuff.github.io) and licensed under [the MIT License](LICENSE.md).

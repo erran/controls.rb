@@ -3,8 +3,9 @@ module Controls
     # A module to encapsulate API methods related to assets
     # @since API v1.0
     # @version v1.0.0
-    # TODO: Update docs
     module Assets
+      # @!group Asset Methods
+
       # @note since the uuid is an optional param it has been added to the
       #   params options hash
       # @raise [Controls::NotFound] if the uuid didn't match any assets
@@ -59,6 +60,8 @@ module Controls
         get "/threat_vectors/#{threat_vector}/undefended_assets", params
       end
       alias_method :assets_by_threat_vector, :undefended_assets
+
+      # @!endgroup
     end
   end
 end
