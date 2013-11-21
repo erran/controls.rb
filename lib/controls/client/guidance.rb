@@ -16,6 +16,12 @@ module Controls
         get "/guidance/#{name}"
       end
 
+      # @param [String] threat the threat name to search by
+      # @return [Array<Hash>] an array of "guidance hashes"
+      def guidance_by_threat(threat)
+        get "/threats/#{threat}/guidance"
+      end
+
       # @!endgroup
     end
   end
