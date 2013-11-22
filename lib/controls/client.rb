@@ -80,7 +80,7 @@ module Controls
       url = URI.escape(File.join(api_endpoint, path))
       resp = middleware.get(url, params, headers)
 
-      Response.generate_ruby(resp.body)
+      Response.parse(resp.body)
     rescue Faraday::Error::ConnectionFailed => e
       if e.message =~ /^SSL_connect/
         warn(*SSL_WARNING)
@@ -98,8 +98,7 @@ module Controls
       url = URI.escape(File.join(web_endpoint, path))
       resp = middleware.get(url, params, headers)
 
-      # Response.parse(resp.body)
-      Response.generate_ruby(resp.body)
+      Response.parse(resp.body)
     rescue Faraday::Error::ConnectionFailed => e
       if e.message =~ /^SSL_connect/
         warn(*SSL_WARNING)
