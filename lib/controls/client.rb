@@ -122,7 +122,8 @@ module Controls
 
        web_get "/api/#{version}"
 
-      @references = Hash[Response.generate_ruby(resp.body).sort]
+       # Use generate_ruby
+      @references = Hash[Response.parse(resp.body).sort]
     rescue Faraday::Error::ConnectionFailed => e
       if e.message =~ /^SSL_connect/
         warn(*SSL_WARNING)
