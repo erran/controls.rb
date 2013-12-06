@@ -6,6 +6,7 @@ module Controls
     module Assets
       # @!group Asset Methods
 
+      # [todo] - use @overload here for assets(params) vs assets(uuid) vs assets({ uuid: 'uuid-string', other: 'param' })
       # @note since the uuid is an optional param it has been added to the
       #   params options hash
       # @raise [Controls::NotFound] if the uuid didn't match any assets
@@ -18,11 +19,20 @@ module Controls
           params = {}
         end
 
-        if uuid
+        if uuid && !uuid.empty?
           get "/assets/#{uuid}", params
         else
           get '/assets', params
         end
+      end
+
+      # [todo] - change the name to asset_search/search_assets?
+      # @param [String] query the query to retreive assets for
+      # @param [Hash] params the option hash to be turned into query parameters
+      # @return [Hash] a hash representing the matching assets
+      def assets_search(query, params = {})
+        params[:q] = query
+        get "/assets/search", params
       end
 
       # @param [String] guidance the guidance name to search by
