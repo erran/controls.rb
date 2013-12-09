@@ -38,7 +38,8 @@ Controls.get '/'
 ### Curl
 ```bash
 # Use -k to allow a self-signed certificate
-curl -H 'Accept: application/json' --netrc-file ~/.rapid7_netrc  -ik https://nexpose.local:3780/insight/controls/api/1.0
+curl -H 'Accept: application/json' --netrc-file ~/.rapid7_netrc  -ik \
+https://nexpose.local:3780/insight/controls/api/1.0
 ```
 
 ### Ruby
