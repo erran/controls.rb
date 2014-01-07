@@ -23,9 +23,12 @@ module Controls
     include Controls::Client::Threats
     include Controls::Client::Trends
 
-    SSL_WARNING = ["The API endpoint used a self-signed or invalid SSL certificate.",
-             "To allow this connection temporarily use `Controls.verify_ssl = false`.",
-             "See the Controls.rb wiki on GitHub for more information on SSL verification."]
+    # A few messages to show the user of Controls::Client in the case that a bad certificate is encountered
+    SSL_WARNING = [
+      'The API endpoint used a self-signed or invalid SSL certificate.',
+      'To allow this connection temporarily use `Controls.verify_ssl = false`.',
+      'See the Controls.rb wiki on GitHub for more information on SSL verification.'
+    ]
 
     # Creates a new {Controls::Client} object
     #
@@ -54,10 +57,14 @@ module Controls
       end
     end
 
+    # Whether the middleware is currently set to verify SSL connections
     def verify_ssl
       middleware.ssl[:verify].nil? || !!middleware.ssl[:verify]
     end
 
+    # Sets the middleware to to verify the SSL on true, or disregard it on false
+    #
+    # @param [Boolean] verify whether to verify SSL or not
     def verify_ssl=(verify)
       middleware.ssl[:verify] = !!verify
     end
@@ -107,6 +114,10 @@ module Controls
       end
     end
 
+    # A list of methods for API connections available to the {Controls::Client}
+    #
+    # @note Any methods defined in a child module will be returned.
+    # @return [Array<Symbol>] the methods defined in {Controls::Client} that are API related
     def api_methods
       mods = Controls::Client.included_modules.map do |mod|
         if mod.to_s =~ /^Controls::Client::/
@@ -117,12 +128,15 @@ module Controls
       mods.compact.map { |mod| mod.instance_methods(false) }.flatten.sort
     end
 
+    # A set of references from the "documentation" API endpoint /api
+    #
+    # @param [String] version the API version to collect documentation from
     def references(version = '1.0')
       version = '1.0' unless version =~ /\d.\d/
 
        web_get "/api/#{version}"
 
-       # Use generate_ruby
+       # [review] - Use Response#generate_ruby
       @references = Hash[Response.parse(resp.body).sort]
     rescue Faraday::Error::ConnectionFailed => e
       if e.message =~ /^SSL_connect/
@@ -132,6 +146,10 @@ module Controls
       end
     end
 
+    # Compares {#options} or with the given options hash
+    #
+    # @param [Hash] opts whether the options are the same or different
+    # @return whether the options are the same or different
     def same_options?(opts)
       opts.hash.eql? options.hash
     end
