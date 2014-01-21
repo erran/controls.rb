@@ -13,12 +13,25 @@ module Controls
 
       # @param [String] control the name of the security control name to
       #   retrieve
+      # @todo warn that this method returns a different object now?
       # @return [Hash] a hash representing a security control
       def security_controls(control = nil)
         if control
           get "/security_controls/#{control}"
         else
           get '/security_controls'
+        end
+      end
+
+      # @param [String] control the name of the security control name to
+      #   retrieve
+      # @todo add a since note? this replaces security_controls and security_controls now returns a new object
+      # @return [Hash] a hash representing a security control coverage
+      def security_controls_coverage(control = nil)
+        if control
+          get "/coverage/security_controls/#{control}"
+        else
+          get '/coverage/security_controls'
         end
       end
 
