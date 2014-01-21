@@ -96,14 +96,13 @@ module Controls
       end
     end
 
-
-    # A wrapper for GET requests
+    # A wrapper for PUT requests
     #
     # @return [Array,Hash] an array or hash of parsed JSON data
-    def web_get(path, params = {}, headers = {})
+    def put(path, body = {}, headers = {}, &block)
       headers = connection_options[:headers].merge(headers)
-      url = URI.escape(File.join(web_endpoint, path))
-      resp = middleware.get(url, params, headers)
+      url = URI.escape(File.join(api_endpoint, path))
+      resp = middleware.put(url, body, headers, &block)
 
       Response.parse(resp.body)
     rescue Faraday::Error::ConnectionFailed => e
@@ -166,6 +165,23 @@ module Controls
           false                                 #   false
         end                                     # end
       RUBY
+    end
+
+    # A wrapper for GET requests to the Controls endpoint root (web endpoint)
+    #
+    # @return [Array,Hash] an array or hash of parsed JSON data
+    def web_get(path, params = {}, headers = {})
+      headers = connection_options[:headers].merge(headers)
+      url = URI.escape(File.join(web_endpoint, path))
+      resp = middleware.get(url, params, headers)
+
+      Response.parse(resp.body)
+    rescue Faraday::Error::ConnectionFailed => e
+      if e.message =~ /^SSL_connect/
+        warn(*SSL_WARNING)
+      else
+        raise e
+      end
     end
   end
 end
