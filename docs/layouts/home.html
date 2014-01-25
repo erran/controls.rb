@@ -5,14 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="http://rapid7.github.io/controlsinsight.rb/">
     <title><%= @item[:title] %></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.css">
 
     <!-- you don't need to keep this, but it's cool for stats! -->
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
   </head>
   <body>
-    <div id="main">
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <a href="#" class="navbar-brand">ControlsInsight</a>
+      <ul class="nav navbar-nav pull-right">
+        <li><a href="#">Overview</a></li>
+        <li><a href="v1/">API</a></li>
+        <li><a href="https://community.rapid7.com/community/controls-insight/blog">Blog</a></li>
+        <li><a href="http://www.rapid7.com/contact/">Support</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <div class="page-header"><h1><%= @item[:title] %></h1></div>
       <%= yield %>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <div class="col-md-4">
+          <span class="glyphicon glyphicon-book"></span>
+        </div>
+        <div class="col-md-4">
+          <span class="glyphicon glyphicon-book"></span>
+        </div>
+        <div class="col-md-4">
+          <span class="glyphicon glyphicon-book"></span>
+        </div>
+      </div>
     </div>
   </body>
 </html>

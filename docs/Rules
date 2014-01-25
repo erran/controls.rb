@@ -16,10 +16,6 @@ compile '*' do
   end
 end
 
-route '/stylesheet/' do
-  '/style.css'
-end
-
 route '/static/*' do
     item.identifier[7..-2]
 end
