@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'nanoc'
 gem 'maruku'
+gem 'nanoc'
+gem 'pygments.rb'
 
 group :development do
   gem 'adsf'
 end
+gem 'nokogiri'

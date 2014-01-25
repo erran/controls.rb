@@ -10,6 +10,8 @@ compile '*' do
   unless item.binary?
     filter :erb
     filter :maruku
+    filter :colorize_syntax,
+           :colorizers => { :ruby => :pygmentsrb, :json => :pygmentsrb }
     layout item[:layout] || 'default'
   end
 end
