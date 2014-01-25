@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'nanoc'
-gem 'kramdown'
+gem 'maruku'
+
+group :development do
+  gem 'adsf'
+end
