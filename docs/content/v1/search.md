@@ -1,7 +1,6 @@
 ---
 title: Search
 ---
-# Search
 ## Asset Search {: #asset-search}
 Find assets by multiple criteria including, but not limited to the
 asset's:
