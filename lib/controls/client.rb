@@ -5,6 +5,7 @@ require 'controls/authentication'
 require 'controls/configurable'
 require 'controls/client/assessments'
 require 'controls/client/assets'
+require 'controls/client/coverage'
 require 'controls/client/guidance'
 require 'controls/client/security_controls'
 require 'controls/client/threats'
@@ -18,6 +19,7 @@ module Controls
     include Controls::Configurable
     include Controls::Client::Assessments
     include Controls::Client::Assets
+    include Controls::Client::Coverage
     include Controls::Client::Guidance
     include Controls::Client::SecurityControls
     include Controls::Client::Threats
