@@ -44,7 +44,7 @@ module Controls
         if controls.is_a? Array
           put '/security_controls', controls.to_json
         elsif controls.is_a? Hash
-          put "/security_controls/#{control['name']}", control.to_json
+          put "/security_controls/#{controls['name']}", controls.to_json
         end
       end
 
