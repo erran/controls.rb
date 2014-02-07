@@ -18,9 +18,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = %w[lib]
 
-  spec.add_dependency 'activesupport'
+  spec.add_dependency 'dish'
   spec.add_dependency 'faraday', '< 0.9'
-  spec.add_dependency 'nokogiri'
+  spec.add_dependency 'rack'
 
   spec.add_development_dependency 'bundler', '~> 1.3'
   spec.add_development_dependency 'netrc'
