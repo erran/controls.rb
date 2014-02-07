@@ -1,9 +1,9 @@
 module Controls
-  class ThreatVector < Dish::Plate
+  class ConfigurationFinding < Dish::Plate
     coerce :assessmentTimestamp, ->(value) { Time.at(value / 1000) if value }
 
     def to_s
-      title
+      "#{state}: #{reason.strip}"
     end
   end
 end

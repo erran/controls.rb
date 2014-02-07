@@ -7,6 +7,10 @@ module Controls
     coerce :assessmentTimestamp, ->(value) { Time.at(value / 1000) if value }
     coerce :references, Reference
     coerce :sections, Section
+
+    def to_s
+      title
+    end
   end
 
   PrioritizedGuidance = Class.new(Guidance)
