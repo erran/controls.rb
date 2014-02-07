@@ -101,4 +101,4 @@ Controls.configuration_trends('configuration-name-here')
 ```
 
 ## License
-This project was created by [Erran Carey (@ipwnstuff)](http://ipwnstuff.github.io) and licensed under [the MIT License](LICENSE.md).
+This project was created by [Erran Carey (@erran)](http://erran.github.io) and licensed under [the MIT License](LICENSE.md).
