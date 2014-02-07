@@ -1,6 +1,7 @@
-require 'faraday'
 require 'json'
+require 'faraday'
 require 'nokogiri'
+require 'rack/utils'
 require 'controls/authentication'
 require 'controls/configurable'
 require 'controls/client/assessments'
@@ -88,8 +89,16 @@ module Controls
       headers = connection_options[:headers].merge(headers)
       url = URI.escape(File.join(api_endpoint, path))
       resp = middleware.get(url, params, headers)
+      @_last_request = {
+        response: resp,
+        path: path
+      }
 
-      Response.parse(resp.body)
+      if !resp.headers['content-type'].eql?("application/json;charset=UTF-8")
+        fail exception('Invalid content-type error')
+      end
+
+      Response.parse(resp.body, path)
     rescue Faraday::Error::ConnectionFailed => e
       if e.message =~ /^SSL_connect/
         warn(*SSL_WARNING)
@@ -105,8 +114,16 @@ module Controls
       headers = connection_options[:headers].merge(headers)
       url = URI.escape(File.join(api_endpoint, path))
       resp = middleware.put(url, body, headers, &block)
+      @_last_request = {
+        response: resp,
+        path: path
+      }
 
-      Response.parse(resp.body)
+      if !resp.headers['content-type'].eql?("application/json;charset=UTF-8")
+        fail exception('Invalid content-type error')
+      end
+
+      Response.parse(resp.body, path)
     rescue Faraday::Error::ConnectionFailed => e
       if e.message =~ /^SSL_connect/
         warn(*SSL_WARNING)
@@ -134,11 +151,7 @@ module Controls
     # @param [String] version the API version to collect documentation from
     def references(version = '1.0')
       version = '1.0' unless version =~ /\d.\d/
-
-       web_get "/api/#{version}"
-
-       # [review] - Use Response#generate_ruby
-      @references = Hash[Response.parse(resp.body).sort]
+      web_get "/api/#{version}"
     rescue Faraday::Error::ConnectionFailed => e
       if e.message =~ /^SSL_connect/
         warn(*SSL_WARNING)
@@ -176,8 +189,16 @@ module Controls
       headers = connection_options[:headers].merge(headers)
       url = URI.escape(File.join(web_endpoint, path))
       resp = middleware.get(url, params, headers)
+      @_last_request = {
+        response: resp,
+        path: path
+      }
 
-      Response.parse(resp.body)
+      if !resp.headers['content-type'].eql?("application/json;charset=UTF-8")
+        fail exception('Invalid content-type error')
+      end
+
+      JSON.parse(resp.body)
     rescue Faraday::Error::ConnectionFailed => e
       if e.message =~ /^SSL_connect/
         warn(*SSL_WARNING)
@@ -185,5 +206,19 @@ module Controls
         raise e
       end
     end
+
+    def exception(message = "HTTP Error")
+      last_request = _last_request
+      if last_request
+        message << ": #{last_request[:response].status} #{Rack::Utils::HTTP_STATUS_CODES[last_request[:response].status]} #{last_request[:path]}"
+      else
+        message = 'Unknown error'
+      end
+
+      Controls::Error.new(message)
+    end
+
+    private
+    attr_reader :_last_request
   end
 end

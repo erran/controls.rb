@@ -65,7 +65,6 @@ module Controls
         @middleware ||= Faraday.new(api_endpoint, connection_options) do |conn|
           conn.adapter Faraday.default_adapter
           conn.response :logger if ENV['CONTROLS_DEBUG']
-          conn.use Controls::Response::RaiseError
         end
       end
 
