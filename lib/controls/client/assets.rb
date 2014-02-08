@@ -30,8 +30,8 @@ module Controls
       # @param [String] query the query to retreive assets for
       # @param [Hash] params the option hash to be turned into query parameters
       # @return [Hash] a hash representing the matching assets
-      def assets_search(query, params = {})
-        params[:q] = query
+      def asset_search(query, params = {})
+        params[:query] = query
         get "/assets/search", params
       end
 
