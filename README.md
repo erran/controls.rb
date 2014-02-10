@@ -99,7 +99,7 @@ Controls.guidance('your-guidance-name-here')
 #    sections: [...], domain: Desktop, references: [...], target_grade: 3.2759693577089286, improvement_delta: 
 #    0.007545795822296775, improvement_grade: 3.2759693577089286, name: enable-uac, title: Enable User Account Control (UAC)>
 
-Controls.client.prioritized_guidance_by_security_control('desktops-with-antivirus-deployed').count
+Controls.prioritized_guidance_by_security_control('desktops-with-antivirus-deployed').count
 # => 3
 ```
 
@@ -112,7 +112,7 @@ Controls.security_controls
 #      #<Controls::SecurityControl: enabled: true, name: desktops-with-email-attachment-filtering-enabled>
 #    ]
 
-Controls.client.security_controls('code-execution-prevention')
+Controls.security_controls('code-execution-prevention')
 # => #<Controls::SecurityControl: enabled: true, name: code-execution-prevention>
 ```
 
@@ -132,7 +132,8 @@ Controls.security_control_coverage
 #    ]
 
 Controls.security_controls('code-execution-prevention')
-# => #<Controls::SecurityControl: enabled: true, name: code-execution-prevention>
+# => #<Controls::SecurityControlCoverage: enabled: true, coverage: #<Controls::CoverageItem: total: 42, covered: 0, uncovered: 42, percent_covered: 0.0>,
+#    assessment_timestamp: 2014-02-06 17:58:06 -0600, name: code-execution-prevention, title: code execution prevention deployed>
 ```
 
 ### Threats
