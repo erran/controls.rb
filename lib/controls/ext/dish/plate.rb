@@ -8,6 +8,9 @@ module Dish
       if method.end_with?('?')
         key = camel_case_key[0..-2]
         _check_for_presence(key)
+      elsif method.end_with?('=')
+        key = camel_case_key[0..-2]
+        _set_value(key, args.first)
       else
         value = _get_value(camel_case_key)
         if value.nil?
@@ -18,7 +21,7 @@ module Dish
       end
     end
 
-    def methods()
+    def methods(all = true)
       valid_keys = as_hash.keys.map do |key|
         key.to_s.gsub(/([^A-Z])([A-Z]+)/, '\1_\2').downcase.to_sym
       end
@@ -41,6 +44,12 @@ module Dish
 
     def to_json(*args)
       as_hash.to_json(*args)
+    end
+
+    private
+    def _set_value(key, value)
+      value = _convert_value(value, self.class.coercions[key])
+      @_original_hash[key] = value
     end
   end
 end
