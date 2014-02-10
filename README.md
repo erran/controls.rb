@@ -71,6 +71,22 @@ Controls.assets('335fb288-da73-4d3c-afe9-b6a1506bf907')
 #    uuid: 335fb288-da73-4d3c-afe9-b6a1506bf907>
 ```
 
+### Configuration
+```ruby
+Controls.configurations
+# => [
+#      #<Controls::Configuration: coverage: #<Controls::CoverageItem: total: 42, covered: 1, uncovered: 41, percent_covered: 2.380952380952381>, assessment_timestamp: 2014-02-06 17:58:06 -0600,
+#      name: unique-password, title: unique password>
+#      ...,
+#      #<Controls::Configuration: coverage: #<Controls::CoverageItem: total: 3, covered: 3, uncovered: 0, percent_covered: 100.0>, assessment_timestamp: 2014-02-06 17:58:06 -0600,
+#      name: email-attachment-filtering-enabled, title: E-mail client attachment filtering enabled>
+#    ]
+
+Controls.configurations('antivirus-installed')
+# => #<Controls::Configuration: coverage: #<Dish::Plate:0x007fb052ce9e10>, assessment_timestamp: 2014-02-06 17:58:06 -0600,
+#    name: antivirus-installed, title: antivirus installed>
+```
+
 ### Guidance
 ```ruby
 # Retreive a list of guidance applicable to a specific threat
