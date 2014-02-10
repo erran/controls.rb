@@ -57,9 +57,9 @@ Controls.assessments(2)
 Controls.assets
 # => [
 #      #<Controls::Asset: discovered_at: 2013-12-15 09:55:47 -0600, operating_system: Windows 7 Professional Edition,
-#      operating_system_certainty: 1.0, security_control_findings: [...], risk_level: MEDIUM, risk_score: 5.554266115196547,
-#      owner: Administrator, name: 10.4.19.25, host_name: CMMNCTR2K7R2-U, ipaddress: 10.4.19.25, uuid:
-#      db899a57-347c-4df9-9ce2-6932dc4adf38>,
+#      operating_system_certainty: 1.0, security_control_findings: [...], risk_level: MEDIUM, risk_score:
+#      5.554266115196547, owner: Administrator, name: 10.4.19.25, host_name: CMMNCTR2K7R2-U, ipaddress: 10.4.19.25,
+#      uuid: db899a57-347c-4df9-9ce2-6932dc4adf38>,
 #      ...
 #    ]
 
@@ -67,7 +67,8 @@ Controls.assets
 Controls.assets('335fb288-da73-4d3c-afe9-b6a1506bf907')
 # => #<Controls::Asset: discovered_at: 2013-12-15 09:55:48 -0600, operating_system: Windows 7 Enterprise Edition, 
 #    operating_system_certainty: 1.0, security_control_findings: [...], risk_level: MEDIUM, risk_score: 
-#    4.724118340950002, owner: Administrator, name: 10.4.19.24, host_name: V-OFC-COMPAT-P, ipaddress: 10.4.19.24, uuid: 335fb288-da73-4d3c-afe9-b6a1506bf907>
+#    4.724118340950002, owner: Administrator, name: 10.4.19.24, host_name: V-OFC-COMPAT-P, ipaddress: 10.4.19.24,
+#    uuid: 335fb288-da73-4d3c-afe9-b6a1506bf907>
 ```
 
 ### Guidance
@@ -81,6 +82,9 @@ Controls.guidance('your-guidance-name-here')
 # => #<Dish::Plate: assessment_timestamp: 1391731086251, sans_reference: , dsd_reference: , nist_reference: , 
 #    sections: [...], domain: Desktop, references: [...], target_grade: 3.2759693577089286, improvement_delta: 
 #    0.007545795822296775, improvement_grade: 3.2759693577089286, name: enable-uac, title: Enable User Account Control (UAC)>
+
+Controls.client.prioritized_guidance_by_security_control('desktops-with-antivirus-deployed').count
+# => 3
 ```
 
 ### Threats
