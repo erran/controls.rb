@@ -87,6 +87,38 @@ Controls.client.prioritized_guidance_by_security_control('desktops-with-antiviru
 # => 3
 ```
 
+### Security Controls
+```ruby
+Controls.security_controls
+# => [
+#      #<Controls::SecurityControl: enabled: true, name: desktops-with-up-to-date-high-risk-applications>,
+#      ...,
+#      #<Controls::SecurityControl: enabled: true, name: desktops-with-email-attachment-filtering-enabled>
+#    ]
+
+Controls.client.security_controls('code-execution-prevention')
+# => #<Controls::SecurityControl: enabled: true, name: code-execution-prevention>
+```
+
+### Security Control Coverage
+```ruby
+Controls.security_control_coverage
+# => [
+#      #<Controls::SecurityControlCoverage: enabled: true, coverage: #<Controls::CoverageItem: total: 20, covered: 6,
+#      uncovered: 14, percent_covered: 30.0>,
+#      assessment_timestamp: 2014-02-06 17:58:06 -0600, name: desktops-with-up-to-date-high-risk-applications,
+#      title: high-risk applications up to date>,
+#      ...,
+#      #<Controls::SecurityControlCoverage: enabled: true, coverage: #<Controls::CoverageItem: total: 3, covered: 3,
+#      uncovered: 0, percent_covered: 100.0>,
+#      assessment_timestamp: 2014-02-06 17:58:06 -0600, name: desktops-with-email-attachment-filtering-enabled,
+#      title: e-mail client attachment filtering enabled>
+#    ]
+
+Controls.security_controls('code-execution-prevention')
+# => #<Controls::SecurityControl: enabled: true, name: code-execution-prevention>
+```
+
 ### Threats
 ```ruby
 # Retrieve a list of all the threats
@@ -110,7 +142,7 @@ Controls.threat_vectors('network-borne')
 # => #<Controls::ThreatVector: grade: 3, assessment_timestamp: 2014-02-06 17:58:06 -0600, grade_level: POOR, name: network-borne, title: Network>
 ```
 
-# Trends
+### Trends
 ```ruby
 # Retrieve a set of statistics over time
 Controls.threat_trends('overall-malware')
