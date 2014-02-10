@@ -4,15 +4,19 @@ The **controls**insight (controls) gem interfaces with [Rapid7's **controls**ins
 ## Installation
 Add this line to your application's Gemfile:
 
-    gem 'controls'
+```ruby
+gem 'controls'
+```
 
 And then execute:
-
-    $ bundle
+```bash
+bundle
+```
 
 Or install it yourself as:
-
-    $ gem install controls
+```bash
+gem install controls
+```
 
 ## Documentation
 * [API documentation](http://rapid7.github.io/controlsinsight.rb)
@@ -29,18 +33,21 @@ Controls.verify_ssl = false
 
 Controls.login :user => 'admin', :password => 'password'
 
-Controls.client.methods
+Controls.client.api_methods
+# => [:applicable_assets, :assessments, :asset_search, :assets, :assets_by_configuration, :assets_by_guidance, ..., :uncovered_assets, :undefended_assets, :update_security_controls]
 ```
 
 ### Assessments
 ```ruby
 # Retrieve all the assessments that have been ran
 Controls.assessments
-# => TODO: Add example output
+# => [#<Controls::Assessment: id: 1, timestamp: 2013-12-15 10:07:39 -0600, assessing: false, high_risk_asset_count: 18,
+#     medium_risk_asset_count: 0, low_risk_asset_count: 0, total_asset_count: 18, overall_risk_score: 1.1723226070935302>]
 
 # Only retrieve a single assessment
-Controls.assessments(1)
-# => TODO: Add example output
+Controls.assessments(2)
+# => #<Controls::Assessment: id: 2, timestamp: 2014-02-06 17:35:02 -0600, assessing: false, high_risk_asset_count: 0,
+#    medium_risk_asset_count: 42, low_risk_asset_count: 0, total_asset_count: 42, overall_risk_score: 3.687419753008327>
 ```
 
 
@@ -48,56 +55,76 @@ Controls.assessments(1)
 ```ruby
 # Retrieve a list of all the assets that Controls has access to
 Controls.assets
-# => TODO: Add example output
+# => [
+#      #<Controls::Asset: discovered_at: 2013-12-15 09:55:47 -0600, operating_system: Windows 7 Professional Edition,
+#      operating_system_certainty: 1.0, security_control_findings: [...], risk_level: MEDIUM, risk_score:
+#      5.554266115196547, owner: Administrator, name: 10.4.19.25, host_name: CMMNCTR2K7R2-U, ipaddress: 10.4.19.25,
+#      uuid: db899a57-347c-4df9-9ce2-6932dc4adf38>,
+#      ...
+#    ]
 
 # Only retrieve a single assessment
-Controls.assets('your-asset-uuid-here')
-# => TODO: Add example output
+Controls.assets('335fb288-da73-4d3c-afe9-b6a1506bf907')
+# => #<Controls::Asset: discovered_at: 2013-12-15 09:55:48 -0600, operating_system: Windows 7 Enterprise Edition, 
+#    operating_system_certainty: 1.0, security_control_findings: [...], risk_level: MEDIUM, risk_score: 
+#    4.724118340950002, owner: Administrator, name: 10.4.19.24, host_name: V-OFC-COMPAT-P, ipaddress: 10.4.19.24,
+#    uuid: 335fb288-da73-4d3c-afe9-b6a1506bf907>
 ```
 
 ### Guidance
 ```ruby
+# Retreive a list of guidance applicable to a specific threat
+Controls.guidance_by_threat('overall-malware')
+# => [...]
+
 # Only retrieve a single guidance by name
 Controls.guidance('your-guidance-name-here')
-# => TODO: Add example output
+# => #<Dish::Plate: assessment_timestamp: 1391731086251, sans_reference: , dsd_reference: , nist_reference: , 
+#    sections: [...], domain: Desktop, references: [...], target_grade: 3.2759693577089286, improvement_delta: 
+#    0.007545795822296775, improvement_grade: 3.2759693577089286, name: enable-uac, title: Enable User Account Control (UAC)>
 
-Controls.guidance_by_threat('overall-malware')
-# => TODO: Add example output
+Controls.client.prioritized_guidance_by_security_control('desktops-with-antivirus-deployed').count
+# => 3
 ```
 
 ### Threats
 ```ruby
 # Retrieve a list of all the threats
 Controls.threats
-# => TODO: Add example output
+# => [#<Controls::Threat: grade: 3, assessment_timestamp: 2014-02-06 17:58:06 -0600, grade_level: POOR, name: overall-malware, title: Overall>]
 
 # Only retrieve a single threat
-Controls.threats('threat-name-here')
-# => TODO: Add example output
+Controls.threats('overall-malware')
+# => #<Controls::Threat: grade: 3, assessment_timestamp: 2014-02-06 17:58:06 -0600, grade_level: POOR, name: overall-malware, title: Overall>
 ```
 
 ### Threat Vectors
 ```ruby
 # Retrieve a list of all the threat vectors
 Controls.threat_vectors
-# => TODO: Add example output
+# => [#<Controls::ThreatVector: grade: 3, assessment_timestamp: 2014-02-06 17:58:06 -0600, grade_level: POOR, name:
+network-borne, title: Network>, ..., #<Controls::ThreatVector: grade: 3, assessment_timestamp: 2014-02-06 17:58:06 -0600, grade_level: POOR, name: email-borne, title: E-mail>]
 
 # Only retrieve a single threat vector
-Controls.threat_vectors('vector-name-here')
-# => TODO: Add example output
+Controls.threat_vectors('network-borne')
+# => #<Controls::ThreatVector: grade: 3, assessment_timestamp: 2014-02-06 17:58:06 -0600, grade_level: POOR, name: network-borne, title: Network>
 ```
 
 # Trends
 ```ruby
 # Retrieve a set of statistics over time
-Controls.threat_trends('threat-name-here')
-# => TODO: Add example output
+Controls.threat_trends('overall-malware')
+# => [#<Controls::Trend: grade: 1.1723226070935302, assessment_timestamp: 2013-12-15 10:07:39 -0600, total_assets: 18>,
+#     #<Controls::Trend: grade: 3.2684235618866317, assessment_timestamp: 2014-02-06 17:58:06 -0600, total_assets: 42>]
 
-Controls.threat_vector_trends('vector-name-here')
-# => TODO: Add example output
+Controls.threat_vector_trends('network-borne')
+# => [#<Controls::Trend: grade: 1.0187000110028335, assessment_timestamp: 2013-12-15 10:07:39 -0600, total_assets: 18>,
+#     #<Controls::Trend: grade: 3.497538201261831, assessment_timestamp: 2014-02-06 17:58:06 -0600, total_assets: 42>]
 
-Controls.configuration_trends('configuration-name-here')
-# => TODO: Add example output
+Controls.configuration_trends('antivirus-installed')
+# => [#<Controls::Trend: assessment_timestamp: 2013-12-15 10:07:39 -0600, total_assets: 18, covered_assets: 0,
+#     covered_percentage: 0.0>, #<Controls::Trend: assessment_timestamp: 2014-02-06 17:58:06 -0600, total_assets: 42,
+#     covered_assets: 9, covered_percentage: 21.428571428571427>]
 ```
 
 ## License
