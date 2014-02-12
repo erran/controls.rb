@@ -13,7 +13,7 @@ module Dish
         _set_value(key, args.first)
       else
         value = _get_value(camel_case_key)
-        if value.nil?
+        if value.nil? && !_allowed_keys.include?(camel_case_key)
           super(method.to_sym, *args, &block)
         else
           value
@@ -50,6 +50,10 @@ module Dish
     def _set_value(key, value)
       value = _convert_value(value, self.class.coercions[key])
       @_original_hash[key] = value
+    end
+
+    def _allowed_keys
+      []
     end
   end
 end
