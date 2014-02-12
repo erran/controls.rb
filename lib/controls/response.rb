@@ -16,7 +16,7 @@ module Controls
           Controls::SecurityControlCoverage
         when /(configuration|event|guidance|prioritized_guidance|security_control|threat_vector|trend)s?$/
           Controls.const_get(Regexp.last_match[1].split('_').map(&:capitalize).join)
-        when %r(^(?:/\d.\d)?\/(assessment|configuration|security_control|threat|threat_vector)s)
+        when %r(^(?:/\d.\d)?\/(assessment|configuration|guidance|security_control|threat|threat_vector)s?)
           Controls.const_get(Regexp.last_match[1].split('_').map(&:capitalize).join)
         when /((?:applicable|miconfigured|uncovered|undefended)?_?asset)s$/
           Controls.const_get('AssetCollection')
