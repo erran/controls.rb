@@ -1,5 +1,3 @@
-require 'controls/client/configurations'
-
 module Controls
   class Client
     # A module to encapsulate API methods related to security controls and
@@ -7,8 +5,6 @@ module Controls
     # @since API v1.0
     # @version v1.0.0
     module SecurityControls
-      include Configurations
-
       #!@group Security Control Methods
 
       # @param [String] control the name of the security control name to

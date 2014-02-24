@@ -7,9 +7,12 @@ require 'controls/configurable'
 require 'controls/client/assessments'
 require 'controls/client/assets'
 require 'controls/client/coverage'
+require 'controls/client/configurations'
 require 'controls/client/guidance'
+require 'controls/client/prioritized_guidance'
 require 'controls/client/security_controls'
 require 'controls/client/threats'
+require 'controls/client/threat_vectors'
 require 'controls/client/trends'
 require 'controls/response'
 
@@ -21,9 +24,12 @@ module Controls
     include Controls::Client::Assessments
     include Controls::Client::Assets
     include Controls::Client::Coverage
+    include Controls::Client::Configurations
     include Controls::Client::Guidance
+    include Controls::Client::PrioritizedGuidance
     include Controls::Client::SecurityControls
     include Controls::Client::Threats
+    include Controls::Client::ThreatVectors
     include Controls::Client::Trends
 
     # A few messages to show the user of Controls::Client in the case that a bad certificate is encountered
