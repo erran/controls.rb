@@ -1,0 +1,25 @@
+FORMAT: 1A
+HOST: https://nexpose.local:3780
+
+# controlsinsight
+Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+
+# Group Search
+
+## Asset Search [/assets/search?query={query}]
+
++ Parameters
+    + query (required, string, `10.4.19`) ... The free text query. This can be a full/partial hostname or IP address.
+
+### Asset Search [GET]
++ Response 200 (application/json)
+
+        [
+          {
+            "uuid": "db899a57-347c-4df9-9ce2-6932dc4adf38>",
+            "riskScore": 5.554266115196547,
+            "riskLevel": "MEDIUM",
+            "hostName": "CMMNCTR2K7R2-U",
+            "ipaddress": "10.4.19.25"
+          }
+        ]
