@@ -17,3 +17,4 @@ test/version_tmp
 tmp
 docs/crash.log
 docs/output/
+.watsonrc
