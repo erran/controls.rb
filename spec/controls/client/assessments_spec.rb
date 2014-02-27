@@ -1,13 +1,24 @@
-require 'controls'
-
-describe Controls::Client::Assessments do
+describe '/api/assessments' do
   before do
-    # Allow self-signed certs in continuous integration
-    Controls.verify_ssl = false
-    Controls.login(ENV['CONTROLS_USERNAME'], ENV['CONTROLS_PASSWORD'])
+    login_to_environment
   end
 
-  it 'returns a list of assessments' do
-    expect(Controls.assessments).to match_format(assessment_format)
+  context 'GET /api/assessments' do
+    it 'returns a list of assessments' do
+      assessments = Controls.assessments
+
+      expect(assessments).to match_assessment_format
+    end
+  end
+
+  context 'GET /api/assessments/1' do
+    it 'returns a single assessment' do
+      assessment = Controls.assessments(1)
+
+      expect(assessment).to match_assessment_format
+      expect(assessment.id).to eq(1)
+      expect(assessment.assessing?).to be_false
+      expect(assessment.overall_risk_score).to be_within(5.0).of(5.0)
+    end
   end
 end

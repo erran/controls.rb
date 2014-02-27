@@ -2,17 +2,10 @@ require 'controls'
 require_relative './matchers.rb'
 
 module SpecHelpers
-  def assessment_format
-    {
-      'assessing' => [TrueClass, FalseClass],
-      'id' => [Fixnum],
-      'overallRiskScore' => [Float],
-      'timestamp' => [Fixnum],
-      'highRiskAssetCount' => [Fixnum],
-      'lowRiskAssetCount' => [Fixnum],
-      'mediumRiskAssetCount' => [Fixnum],
-      'totalAssetCount' => [Fixnum],
-    }
+  def login_to_environment
+    # Allow self-signed certs in continuous integration
+    Controls.verify_ssl = false
+    Controls.login(ENV['CONTROLS_USERNAME'], ENV['CONTROLS_PASSWORD'])
   end
 end
 

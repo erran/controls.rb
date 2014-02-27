@@ -5,18 +5,17 @@ module Dish
       camel_case_key = method.split('_').map(&:capitalize).join
       camel_case_key[0] = camel_case_key[0].downcase
 
-      if method.end_with?('?')
+      if method.end_with? '?'
         key = camel_case_key[0..-2]
         _check_for_presence(key)
-      elsif method.end_with?('=')
+      elsif method.end_with? '='
         key = camel_case_key[0..-2]
         _set_value(key, args.first)
       else
-        value = _get_value(camel_case_key)
-        if value.nil? && !_allowed_keys.include?(camel_case_key)
-          super(method.to_sym, *args, &block)
+        if @_original_hash.key?(camel_case_key)
+          _get_value(camel_case_key)
         else
-          value
+          super(method.to_sym, *args, &block)
         end
       end
     end
@@ -42,18 +41,17 @@ module Dish
       "#<#{self.class}: #{vars.join(', ')}>"
     end
 
+    alias_method :to_h, :as_hash
+
     def to_json(*args)
       as_hash.to_json(*args)
     end
 
     private
+
     def _set_value(key, value)
       value = _convert_value(value, self.class.coercions[key])
       @_original_hash[key] = value
-    end
-
-    def _allowed_keys
-      []
     end
   end
 end

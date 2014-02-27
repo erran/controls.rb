@@ -31,7 +31,8 @@ module Controls
       # @return [String] the API endpoint's URI as a URL
       def api_endpoint
         endpoint = ENV['CONTROLS_API_ENDPOINT'] || API_ENDPOINT
-        URI.parse(endpoint).to_s
+        # [todo] - this raises an exception, it is only used for URI validation so it's being commented out for now
+        # URI.parse(endpoint).to_s
       end
 
       # @return [String] the API version to connect to
