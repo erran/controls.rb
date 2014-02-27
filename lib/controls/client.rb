@@ -101,7 +101,7 @@ module Controls
         path: path
       }
 
-      if !resp.headers['content-type'].eql?("application/json;charset=UTF-8")
+      if !resp.headers['content-type'] =~ /^application\/json/
         fail exception('Invalid content-type error')
       end
 
@@ -126,7 +126,7 @@ module Controls
         path: path
       }
 
-      if !resp.headers['content-type'].eql?("application/json;charset=UTF-8")
+      if !resp.headers['content-type'] =~ /^application\/json/
         fail exception('Invalid content-type error')
       end
 
@@ -201,7 +201,7 @@ module Controls
         path: path
       }
 
-      if !resp.headers['content-type'].eql?("application/json;charset=UTF-8")
+      if !resp.headers['content-type'] =~ /^application\/json/
         fail exception('Invalid content-type error')
       end
 
