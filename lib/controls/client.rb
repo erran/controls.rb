@@ -1,6 +1,5 @@
 require 'json'
 require 'faraday'
-require 'nokogiri'
 require 'rack/utils'
 require 'controls/authentication'
 require 'controls/configurable'
