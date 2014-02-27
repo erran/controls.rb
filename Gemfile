@@ -7,3 +7,7 @@ group :test do
   gem 'rake'
   gem 'rspec'
 end
+
+group :documentation do
+  gem 'yard'
+end
