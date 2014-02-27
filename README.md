@@ -1,5 +1,5 @@
 # controlsinsight client gem
-[![Build Status](https://travis-ci.org/erran-r7/controls.rb.png?branch=master)](https://travis-ci.org/erran-r7/controls.rb)
+[![Build Status](https://travis-ci.org/erran/controls.rb.png?branch=master)](https://travis-ci.org/erran/controls.rb)
 
 The **controls**insight (controls) gem interfaces with [Rapid7's **controls**insight API](http://rapid7.github.io/controlsinsight.rb).
 
