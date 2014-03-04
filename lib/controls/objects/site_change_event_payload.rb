@@ -1,4 +1,4 @@
 module Controls
-  class SiteChangeEventPayload < Dish::Plate
-  end
+  # A representation of a given SiteChangeEventPayload's payload
+  SiteChangeEventPayload = Class.new(Dish::Plate)
 end
