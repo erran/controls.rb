@@ -18,10 +18,13 @@ module Controls
           Controls.const_get(Regexp.last_match[1].split('_').map(&:capitalize).join)
         when %r(^(?:/\d.\d)?\/(assessment|configuration|guidance|security_control|threat|threat_vector)s?)
           Controls.const_get(Regexp.last_match[1].split('_').map(&:capitalize).join)
+        # [todo] - these asset related endpoints are inconsisteny create a better regex?
+        when %r(^(?:/\d.\d)?/assets/search)
+          Controls::AssetCollection
         when /((?:applicable|miconfigured|uncovered|undefended)?_?asset)s$/
-          Controls.const_get('AssetCollection')
-        when %r(^/((?:applicable|miconfigured|uncovered|undefended)?_?asset)s/)
-          Controls.const_get('Asset')
+          Controls::AssetCollection
+        when %r(^(?:/\d.\d)?/((?:applicable|miconfigured|uncovered|undefended)?_?asset)s/)
+          Controls::Asset
         else
           Dish::Plate
         end
