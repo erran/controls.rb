@@ -9,7 +9,7 @@ module Controls
       # @param [String] uuid the UUID of the asset to retrieve findings for
       # @raise [Controls::NotFound] if the uuid didn't match any assets
       # @return [Hash] a hash representing the matching asset
-      def assets(uuid, params = {})
+      def findings_by_asset_uuid(uuid, params = {})
         get "/assets/#{uuid}/findings", params
       end
 
