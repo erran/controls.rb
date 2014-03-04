@@ -3,7 +3,10 @@ require 'controls/objects/security_control_finding'
 module Controls
   class Asset < Dish::Plate
     coerce :discoveredAt, ->(value) { Time.at(value / 1000) if value }
-    coerce :securityControlFindings, Controls::SecurityControlFinding
+
+    def findings
+      Controls.client.findings_by_asset_uuid(uuid)
+    end
 
     def to_s
       %(#{host_name} (#{ipaddress}) - #{operating_system})
