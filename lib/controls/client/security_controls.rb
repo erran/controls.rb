@@ -33,7 +33,7 @@ module Controls
 
       # Updates the specified security control(s)
       #
-      # @param [Array[Hash{String=>String,Boolean}] controls a list of controls to update
+      # @param [Array[Hash{String=>String,Boolean}]] controls a list of controls to update
       # @return [void]
       def update_security_controls(controls)
         # [review] - this style is a discouraged for Arrays, but we want to treat controls as an Array of Hashes
