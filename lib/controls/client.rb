@@ -5,9 +5,10 @@ require 'controls/authentication'
 require 'controls/configurable'
 require 'controls/client/assessments'
 require 'controls/client/assets'
-require 'controls/client/events'
 require 'controls/client/coverage'
 require 'controls/client/configurations'
+require 'controls/client/events'
+require 'controls/client/findings'
 require 'controls/client/guidance'
 require 'controls/client/prioritized_guidance'
 require 'controls/client/security_controls'
@@ -23,9 +24,10 @@ module Controls
     include Controls::Configurable
     include Controls::Client::Assessments
     include Controls::Client::Assets
-    include Controls::Client::Events
     include Controls::Client::Coverage
     include Controls::Client::Configurations
+    include Controls::Client::Events
+    include Controls::Client::Findings
     include Controls::Client::Guidance
     include Controls::Client::PrioritizedGuidance
     include Controls::Client::SecurityControls
