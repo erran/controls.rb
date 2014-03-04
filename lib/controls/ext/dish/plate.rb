@@ -1,25 +1,5 @@
 module Dish
   class Plate
-    def method_missing(method, *args, &block)
-      method = method.to_s
-      camel_case_key = method.split('_').map(&:capitalize).join
-      camel_case_key[0] = camel_case_key[0].downcase
-
-      if method.end_with? '?'
-        key = camel_case_key[0..-2]
-        _check_for_presence(key)
-      elsif method.end_with? '='
-        key = camel_case_key[0..-2]
-        _set_value(key, args.first)
-      else
-        if @_original_hash.key?(camel_case_key)
-          _get_value(camel_case_key)
-        else
-          super(method.to_sym, *args, &block)
-        end
-      end
-    end
-
     def methods(all = true)
       valid_keys = as_hash.keys.map do |key|
         key.to_s.gsub(/([^A-Z])([A-Z]+)/, '\1_\2').downcase.to_sym
@@ -52,6 +32,26 @@ module Dish
     def _set_value(key, value)
       value = _convert_value(value, self.class.coercions[key])
       @_original_hash[key] = value
+    end
+
+    def method_missing(method, *args, &block)
+      method = method.to_s
+      camel_case_key = method.split('_').map(&:capitalize).join
+      camel_case_key[0] = camel_case_key[0].downcase
+
+      if method.end_with? '?'
+        key = camel_case_key[0..-2]
+        _check_for_presence(key)
+      elsif method.end_with? '='
+        key = camel_case_key[0..-2]
+        _set_value(key, args.first)
+      else
+        if @_original_hash.key?(camel_case_key)
+          _get_value(camel_case_key)
+        else
+          super(method.to_sym, *args, &block)
+        end
+      end
     end
   end
 end

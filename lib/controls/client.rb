@@ -214,6 +214,10 @@ module Controls
       end
     end
 
+    # Creates an error from the last request
+    #
+    # @param [String] message the message to prepend to the response code/status
+    # @return [Controls::Error] the generated error message
     def exception(message = "HTTP Error")
       last_request = _last_request
       if last_request
