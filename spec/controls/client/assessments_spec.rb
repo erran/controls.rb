@@ -7,7 +7,9 @@ describe '/api/assessments' do
     it 'returns a list of assessments' do
       assessments = Controls.assessments
 
-      expect(assessments).to match_assessment_format
+      assessments.each do |assessment|
+        expect(assessment).to match_assessment_format
+      end
     end
   end
 
