@@ -4,7 +4,10 @@ module Controls
   # A representation of the Asset resource
   class Asset < Dish::Plate
     coerce :discoveredAt, ->(value) { Time.at(value / 1000) if value }
-    coerce :securityControlFindings, Controls::SecurityControlFinding
+
+    def findings
+      Controls.client.findings_by_asset_uuid(uuid)
+    end
 
     # Returns the hostname, IP, and OS of the asset
     #
