@@ -1,1 +1,2 @@
 - LICENSE.md
+--exclude=lib/controls/ext

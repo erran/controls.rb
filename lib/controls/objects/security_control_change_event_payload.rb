@@ -1,4 +1,4 @@
 module Controls
-  class SecurityControlChangeEventPayload < Dish::Plate
-  end
+  # A representation of a given SecurityControlChangeEvent's payload
+  SecurityControlChangeEventPayload = Class.new(Dish::Plate)
 end

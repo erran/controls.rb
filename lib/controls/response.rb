@@ -3,7 +3,14 @@ require 'controls/objects'
 module Controls
   # A module to encapsulate middleware customization
   module Response
-    def self.parse(obj, path = nil)
+    module_function
+
+    # Returns the parsed JSON response after marshaling through Dish
+    #
+    # @param [String] obj the JSON object to parse
+    # @param [String] path the requested API endpoint's path
+    # @return [Dish::Plate,Object] a marshaled representation of the JSON response
+    def parse(obj, path = nil)
       hash_or_array = JSON.parse(obj)
 
       if hash_or_array.is_a?(Hash) && hash_or_array.key?('message') && hash_or_array.key?('documentationUrl')

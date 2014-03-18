@@ -1,7 +1,7 @@
 module Controls
+  # A representation of the CoverageInformation for SecurityControl or
+  # Configuration coverage
   class CoverageInformation < Dish::Plate
-    def to_s
-      "#<#{self.class}: total: #{total}, covered: #{covered}, uncovered: #{uncovered}, percent_covered: #{percent_covered}>"
-    end
+    alias_method :to_s, :inspect
   end
 end
