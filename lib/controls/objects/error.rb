@@ -8,5 +8,11 @@ module Controls
     # @!attribute message
     #   The status code for the error response
     attr_accessor :status
+
+    def initialize(attributes = {})
+      attributes.each do |attribute, value|
+        instance_variable_set(:"@#{attribute}", value)
+      end
+    end
   end
 end
