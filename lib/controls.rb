@@ -3,9 +3,6 @@ require 'controls/default'
 
 # A Ruby client for the **controls**insight API
 module Controls
-  # A class under the Controls namespace to wrap API errors
-  Error = Class.new(StandardError)
-
   class << self
     include Controls::Configurable
 

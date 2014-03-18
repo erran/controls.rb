@@ -15,6 +15,8 @@ module Controls
 
       if hash_or_array.is_a?(Hash) && hash_or_array.key?('message') && hash_or_array.key?('documentationUrl')
         type = Controls::Error
+      elsif hash_or_array.is_a?(Hash) && hash_or_array.key?('message') && hash_or_array.key?('status')
+        type = Controls::Error
       end
 
       type ||=
