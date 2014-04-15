@@ -133,7 +133,9 @@ module Controls
         fail exception('Invalid content-type error')
       end
 
-      resp.status
+      return resp.status if resp.status == 200
+
+      Response.parse(resp.body, path)
     rescue Faraday::Error::ConnectionFailed => e
       if e.message =~ /^SSL_connect/
         warn(*SSL_WARNING)
