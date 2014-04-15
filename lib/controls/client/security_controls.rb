@@ -36,9 +36,10 @@ module Controls
       # @param [Array[Hash{String=>String,Boolean}]] controls a list of controls to update
       # @return [void]
       def update_security_controls(controls)
-        # [review] - this style is a discouraged for Arrays, but we want to treat controls as an Array of Hashes
-        if controls.is_a? Array
+        if controls.kind_of? Array
           put '/security_controls', controls.to_json
+        elsif controls.is_a? Controls::SecurityControl
+          put "/security_controls/#{controls.name}", controls.to_json
         elsif controls.is_a? Hash
           put "/security_controls/#{controls['name']}", controls.to_json
         end
