@@ -121,6 +121,7 @@ module Controls
     # @return [Array,Hash] an array or hash of parsed JSON data
     def put(path, body = {}, headers = {}, &block)
       headers = connection_options[:headers].merge(headers)
+      headers['content-type'] = 'application/json'
       url = URI.escape(File.join(api_endpoint, path))
       resp = middleware.put(url, body, headers, &block)
       @_last_request = {
@@ -132,7 +133,7 @@ module Controls
         fail exception('Invalid content-type error')
       end
 
-      Response.parse(resp.body, path)
+      resp.status
     rescue Faraday::Error::ConnectionFailed => e
       if e.message =~ /^SSL_connect/
         warn(*SSL_WARNING)
