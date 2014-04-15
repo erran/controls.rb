@@ -1,3 +1,5 @@
+require_relative '../../spec_helper'
+
 describe '/api/assessments' do
   before do
     login_to_environment
