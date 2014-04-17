@@ -1,7 +1,7 @@
 # controlsinsight client gem
 [![Build Status](https://travis-ci.org/erran/controls.rb.png?branch=master)](https://travis-ci.org/erran/controls.rb)
 
-The **controls**insight (controls) gem interfaces with [Rapid7's **controls**insight API](http://rapid7.github.io/controlsinsight.rb).
+The controlsinsight (controls) gem interfaces with [Rapid7's controlsinsight API](http://rapid7.github.io/controlsinsight.rb).
 
 ## Installation
 Add this line to your application's Gemfile:
