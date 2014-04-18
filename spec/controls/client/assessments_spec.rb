@@ -10,6 +10,7 @@ describe '/api/assessments' do
       assessments = Controls.assessments
 
       assessments.each do |assessment|
+        expect(assessment).to be_kind_of(Controls::Assessment)
         expect(assessment).to match_assessment_format
       end
     end
@@ -19,6 +20,7 @@ describe '/api/assessments' do
     it 'returns a single assessment' do
       assessment = Controls.assessments(1)
 
+      expect(assessment).to be_kind_of(Controls::Assessment)
       expect(assessment).to match_assessment_format
       expect(assessment.id).to eq(1)
       expect(assessment.assessing?).to be_false

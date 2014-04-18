@@ -7,11 +7,11 @@ module Controls
 
     # Returns the parsed JSON response after marshaling through Dish
     #
-    # @param [String] obj the JSON object to parse
+    # @param [String] response_body the JSON object to parse
     # @param [String] path the requested API endpoint's path
     # @return [Dish::Plate,Object] a marshaled representation of the JSON response
-    def parse(obj, path = nil)
-      hash_or_array = JSON.parse(obj)
+    def parse(response_body, response_status = nil, path = nil)
+      hash_or_array = JSON.parse(response_body)
 
       if hash_or_array.is_a?(Hash) && hash_or_array.key?('message') && hash_or_array.key?('documentationUrl')
         type = Controls::Error
@@ -41,6 +41,13 @@ module Controls
         end
 
       Dish(hash_or_array, type)
+    rescue JSON::ParserError
+      opts = { message: 'An error occurred', status: response_status }
+      opts.delete_if do |_, value|
+        value.nil?
+      end
+
+      Controls::Error.new(opts)
     end
   end
 end

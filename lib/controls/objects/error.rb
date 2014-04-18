@@ -34,6 +34,10 @@ module Controls
       @message or inspect
     end
 
+    def to_json
+      @__attributes__.to_json
+    end
+
     private
 
     attr_reader :__attributes__
