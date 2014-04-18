@@ -1,10 +1,9 @@
 require 'controls/objects/coverage_information'
 
 module Controls
-  # A representation of the SecuritControl resource with coverage information
-  class SecurityControlCoverage < Dish::Plate
+  # A representation of the Configuration resource with coverage information
+  class ConfigurationCoverage < Dish::Plate
     include Comparable
-
 
     coerce :assessmentTimestamp, ->(value) { Time.at(value / 1000) if value }
     coerce :coverage, Controls::CoverageInformation
@@ -24,7 +23,7 @@ module Controls
     end
 
     def without_coverage
-      Controls::SecurityControl.new(enabled: enabled, name: name)
+      Controls::Configuration.new(enabled: enabled, name: name)
     end
 
     def without_coverage!
@@ -33,7 +32,7 @@ module Controls
       end
     end
 
-    # The title of the security control
+    # The title of the configuration
     #
     # @return [String]
     def to_s
