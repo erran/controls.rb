@@ -69,7 +69,8 @@ module Controls
 
       self
     end
-    # NOTE: This method currently leaves some "updated defaults" intact
+
+    # [note] - This method currently leaves some "updated defaults" intact
     # alias_method :reset!, :setup
 
     private
