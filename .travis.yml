@@ -2,7 +2,4 @@ language: ruby
 rvm:
   - 2.1.0
 env:
-  - CONTROLS_API_ENDPOINT="https://controlsinsight.apiary.io/insight/controls/api"
-  - CONTROLS_WEB_ENDPOINT="https://controlsinsight.apiary.io/insight/controls"
-  - CONTROLS_USERNAME="johndoe"
-  - CONTROLS_PASSWORD="Password123!"
+  - CONTROLS_API_ENDPOINT="https://controlsinsight.apiary.io/insight/controls/api" CONTROLS_WEB_ENDPOINT="https://controlsinsight.apiary.io/insight/controls" CONTROLS_USERNAME="johndoe" CONTROLS_PASSWORD="Password123!"
