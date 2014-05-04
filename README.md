@@ -163,7 +163,7 @@ Controls.threat_vectors('network-borne')
 
 ### Trends
 ```ruby
-# Retrieve a set of statistics over time
+# Retrieve a list of trend points over time
 Controls.threat_trends('overall-malware')
 # => [#<Controls::Trend: grade: 1.1723226070935302, assessment_timestamp: 2013-12-15 10:07:39 -0600, total_assets: 18>,
 #     #<Controls::Trend: grade: 3.2684235618866317, assessment_timestamp: 2014-02-06 17:58:06 -0600, total_assets: 42>]
