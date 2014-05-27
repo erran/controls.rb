@@ -97,7 +97,6 @@ module Controls
     def get(path, params = {}, headers = {})
       headers = connection_options[:headers].merge(headers)
       url = URI.escape(File.join(api_endpoint, path))
-      puts url, params, headers
       resp = middleware.get(url, params, headers)
       @_last_request = {
         response: resp,
