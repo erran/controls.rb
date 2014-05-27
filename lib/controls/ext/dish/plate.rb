@@ -12,7 +12,8 @@ module Dish
       hash = as_hash
       keys_to_snake_case = hash.keys.map { |key|
         [key, key.to_s.gsub(/([^A-Z])([A-Z]+)/, '\1_\2').downcase]
-      }.to_h
+      }
+      keys_to_snake_case = Hash[keys_to_snake_case]
 
       vars = hash.map do |key, value|
         "#{keys_to_snake_case[key]}: #{_get_value(key)}"
