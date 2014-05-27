@@ -24,7 +24,7 @@ module Controls
       #   coverage for
       # @return [Array<Controls::ConfigurationCoverage>,Controls::ConfigurationCoverage]
       def configuration_coverage(configuration_name = nil)
-        if security_control_name
+        if configuration_name
           get "/coverage/configurations/#{configuration_name}"
         else
           get '/coverage/configurations'
