@@ -7,17 +7,6 @@ module Controls
     module Configurations
       # @!group Configuration Methods
 
-      # @param [String] configuration the name of the configuration to search
-      #   for
-      # @return [Array<Hash>] a list of hashes representing configurations
-      def configurations(configuration = nil)
-        if configuration
-          get "/configurations/#{configuration}"
-        else
-          get "/configurations"
-        end
-      end
-
       # @param [String] control the security control look up configurations for
       # @return [Array<Hash>] a list of hashes representing configurations
       def security_control_configurations(control)

@@ -1,7 +1,7 @@
 require 'controls/objects/coverage_information'
 
 module Controls
-  # An object that represents the security control resource (with coverage)
+  # A representation of the SecuritControl resource with coverage information
   class SecurityControlCoverage < Dish::Plate
     include Comparable
 
