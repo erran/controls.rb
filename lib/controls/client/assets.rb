@@ -52,7 +52,8 @@ module Controls
       # @param [String] threat the threat name to search by
       # @return [Array<Hash>] an array of hashes that represent assets
       def threat_assets(threat, params = {})
-        get "/threats/#{threat}/assets", params
+        fail NotImplementedError, "Assets by threat is not a valid request. Use Controls::Client#assets or Controls::Client#assets_by_threat_vector instead."
+        # get "/threats/#{threat}/assets", params
       end
       alias_method :assets_by_threat, :threat_assets
 
