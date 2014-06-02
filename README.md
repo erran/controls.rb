@@ -33,7 +33,7 @@ Controls.api_endpoint = "#{Controls.web_endpoint}/api/1.0"
 # If your endpoint uses a self-signed cert. turn off SSL cert. verification
 Controls.verify_ssl = false
 
-Controls.login(username: 'admin', password: 'password')
+Controls.login('admin', 'password')
 
 Controls.client.api_methods
 # => [:applicable_assets, :assessments, :asset_search, :assets, :assets_by_configuration, :assets_by_guidance, ..., :uncovered_assets, :undefended_assets, :update_security_controls]
