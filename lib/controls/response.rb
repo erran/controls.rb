@@ -32,9 +32,9 @@ module Controls
         # [todo] - these asset related endpoints are inconsisteny create a better regex?
         when %r(^(?:/\d.\d)?/assets/search)
           Controls::AssetCollection
-        when /((?:applicable|miconfigured|uncovered|undefended)?_?asset)s$/
+        when /((?:applicable|misconfigured|uncovered|undefended)?_?asset)s$/
           Controls::AssetCollection
-        when %r(^(?:/\d.\d)?/((?:applicable|miconfigured|uncovered|undefended)?_?asset)s/)
+        when %r(^(?:/\d.\d)?/((?:applicable|misconfigured|uncovered|undefended)?_?asset)s/)
           Controls::Asset
         else
           Dish::Plate
