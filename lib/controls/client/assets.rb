@@ -45,7 +45,7 @@ module Controls
       # @param [String] configuration the name of the configuration to search by
       # @return [Array<Hash>] an array of hashes that represent assets
       def misconfigured_assets(configuration, params = {})
-        get "/configurations/#{configuration}/uncovered_assets", params
+        get "/configurations/#{configuration}/misconfigured_assets", params
       end
       alias_method :assets_by_configuration, :misconfigured_assets
 
