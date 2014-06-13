@@ -4,7 +4,9 @@ module Controls
   class Guidance
     # A object that represents the reference resource of a {Controls::Guidance}
     class Reference < Dish::Plate
-      # Returns a string representing a guidance collection
+      # Represents the guidance collection in a human friendly way 
+      #
+      # @return [String] a string representing a guidance collection
       def to_s
         url ? "#{title}: (#{url})" : title
       end
