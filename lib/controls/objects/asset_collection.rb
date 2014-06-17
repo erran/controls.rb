@@ -10,8 +10,8 @@ module Controls
 
     # Acts as a proxy to resources.map
     #
-    # @yield [resource] gives three resources
-    def map(&block)
+    # @return [Array] The results of AssetCollection#resources#map
+    def map(*args, &block)
       resources.map(*args, &block)
     end
 
