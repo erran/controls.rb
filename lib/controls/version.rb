@@ -1,4 +1,4 @@
 module Controls
   # The version of the Controls gem
-  VERSION = '1.7.12'
+  VERSION = '2.0.0.beta.1'
 end
