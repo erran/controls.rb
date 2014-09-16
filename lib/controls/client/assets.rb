@@ -26,6 +26,12 @@ module Controls
         end
       end
 
+      def asset_count(threat, vector = nil)
+        params = { threatName: threat }
+        params[:threatVectorName] = vector if vector
+        get '/assets/count', params
+      end
+
       # [todo] - change the name to asset_search/search_assets?
       # @param [String] query the query to retreive assets for
       # @param [Hash] params the option hash to be turned into query parameters
