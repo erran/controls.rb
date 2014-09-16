@@ -29,6 +29,8 @@ module Controls
           Controls.const_get(Regexp.last_match[1].split('_').map(&:capitalize).join)
         when /findings$/
           Controls::SecurityControlFinding
+        when %r(^(?:/\d.\d)?/assets/count)
+          Controls::AssetRiskSummary
         # [todo] - these asset related endpoints are inconsisteny create a better regex?
         when %r(^(?:/\d.\d)?/assets/search)
           Controls::AssetCollection
