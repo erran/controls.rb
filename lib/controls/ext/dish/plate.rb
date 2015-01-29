@@ -1,7 +1,7 @@
 module Dish
   class Plate
     def methods(all = true)
-      valid_keys = as_hash.keys.map do |key|
+      valid_keys = to_h.keys.map do |key|
         key.to_s.gsub(/([^A-Z])([A-Z]+)/, '\1_\2').downcase.to_sym
       end
 
@@ -9,7 +9,7 @@ module Dish
     end
 
     def inspect
-      hash = as_hash
+      hash = to_h
       keys_to_snake_case = hash.keys.map { |key|
         [key, key.to_s.gsub(/([^A-Z])([A-Z]+)/, '\1_\2').downcase]
       }
@@ -22,10 +22,10 @@ module Dish
       "#<#{self.class}: #{vars.join(', ')}>"
     end
 
-    alias_method :to_h, :as_hash
+    alias_method :to_h, :to_h
 
     def to_json(*args)
-      as_hash.to_json(*args)
+      to_h.to_json(*args)
     end
 
     private
